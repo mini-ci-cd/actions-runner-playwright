@@ -1,7 +1,7 @@
-name: Publish image
+name: Refresh image
 on:
-  release:
-    types: [released]
+  schedule:
+    - cron:  '0 2 10 * *' #each month on day 10
 
 jobs:
   build:
@@ -19,4 +19,4 @@ jobs:
       uses: docker/build-push-action@v3.1.0
       with:
         push: true
-        tags: ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }},ghcr.io/${{ github.repository }}:latest
+        tags: ghcr.io/${{ github.repository }}:latest
