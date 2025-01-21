@@ -8,7 +8,8 @@ RUN  wget -q https://install.determinate.systems/nix/nix-installer-x86_64-linux 
 
 ENV FORCE=1 
 ENV DEVBOX_USE_VERSION=0.13.1 
+ENV PLAYWRIGHT_VERSION=1.49.1
 RUN curl -fsSL https://get.jetify.com/devbox | bash
 RUN mkdir /tmp/devbox && cd /tmp/devbox && devbox init && devbox add nodejs && \
-  devbox run npx --yes playwright@1.47.2  install --with-deps chromium && \
+  devbox run npx --yes playwright@${PLAYWRIGHT_VERSION}  install --with-deps chromium && \
   sudo rm -rf /nix  && sudo rm -rf /tmp/devbox
