@@ -1,7 +1,7 @@
 FROM ghcr.io/actions/actions-runner:latest
 
 USER root
-RUN  apt update -q && apt install -qqy git uidmap jq sqlite3 lsof zstd curl wget  
+RUN  apt update -q && apt install -qqy git uidmap jq sqlite3 lsof zstd curl wget build-essential
 USER runner
 RUN  wget -q https://install.determinate.systems/nix/nix-installer-x86_64-linux && chmod +x nix-installer-x86_64-linux && \
   ./nix-installer-x86_64-linux install linux --no-start-daemon --no-confirm && sudo chown -R runner /nix  && rm nix-installer-x86_64-linux
