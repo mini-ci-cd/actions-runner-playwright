@@ -1,5 +1,6 @@
 name: Refresh image
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '0 2 10 * *' #each month on day 10
 
